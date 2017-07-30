@@ -36,3 +36,17 @@ func New(n int) *Node {
 	r.prev = p
 	return r
 }
+
+func main() {
+	strings := []string{"first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelveth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth"}
+	list := New(len(strings))
+	t := list
+	for _, v := range strings {
+		t.data = v
+		t = t.next
+	}
+	fmt.Println(list.Len())
+	for i, x := 0, list; i < list.Len(); i, x = i+1, x.next {
+		fmt.Printf("%s ", x.data)
+	}
+}
