@@ -21,6 +21,25 @@ func (l *Node) Len() (n int) {
 	return
 }
 
+/* 插入元素
+ * e 为被插入元素
+ * at 为插入位置
+ */
+func (l *Node) InsertElement(e, at *Node) {
+	e.next = at.next
+	at.next.prev = e
+	at.next = e
+	e.prev = at
+}
+
+//删除元素
+func (l *Node) DeleteElement(e *Node) {
+	e.prev.next = e.next
+	e.next.prev = e.prev
+	e.prev = nil
+	e.next = nil
+}
+
 //创建一个新的拥有n个元素的循环链表
 func New(n int) *Node {
 	if n <= 0 {
